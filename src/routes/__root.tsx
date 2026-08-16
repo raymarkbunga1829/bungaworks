@@ -56,9 +56,15 @@ export const Route = createRootRoute({
   notFoundComponent: () => (
     <main className="grid min-h-dvh place-items-center bg-bg px-6 text-center text-fg">
       <div>
-        <p className="font-display text-5xl tracking-tight">404</p>
+        <p className="text-[11px] uppercase tracking-[0.2em] text-subtle">
+          Bungaworks
+        </p>
+        <p className="mt-3 font-display text-5xl tracking-tight">404</p>
         <p className="mt-2 text-muted">That page is not in the studio.</p>
-        <a href="/" className="mt-6 inline-block text-sm text-fg underline-offset-4 hover:underline">
+        <a
+          href="/"
+          className="mt-6 inline-flex min-h-11 items-center text-sm text-fg underline-offset-4 hover:underline"
+        >
           Back to Bungaworks
         </a>
       </div>

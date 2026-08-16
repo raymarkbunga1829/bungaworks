@@ -331,9 +331,20 @@ export function TetrisGame() {
                 <p className="mt-2 max-w-[16rem] text-sm text-muted">
                   Guideline Tetris. Click or tap to start.
                 </p>
+                {hud.best > 0 ? (
+                  <p className="mt-3 font-mono text-xs tabular-nums text-subtle">
+                    Best {hud.best.toLocaleString()}
+                  </p>
+                ) : null}
                 <Button className="mt-6" onClick={begin}>
                   Play
                 </Button>
+                <p className="mt-5 hidden text-[11px] uppercase tracking-[0.14em] text-subtle sm:block">
+                  A D move · Z X rotate · space drop
+                </p>
+                <p className="mt-5 text-[11px] uppercase tracking-[0.14em] text-subtle sm:hidden">
+                  Tap to start · swipe to shift
+                </p>
               </Overlay>
             ) : null}
             {hud.status === "paused" ? (

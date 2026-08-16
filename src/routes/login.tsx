@@ -3,7 +3,18 @@ import { GROK_PROVIDERS, authEnabled, signIn } from "@/lib/auth/client";
 import { SiteShell } from "@/components/site-shell";
 import { Button } from "@/components/ui/button";
 
-export const Route = createFileRoute("/login")({ component: Login });
+export const Route = createFileRoute("/login")({
+  component: Login,
+  head: () => ({
+    meta: [
+      { title: "Sign in — Bungaworks" },
+      {
+        name: "description",
+        content: "Sign in to put a STACK run on the Bungaworks studio board.",
+      },
+    ],
+  }),
+});
 
 function Login() {
   return (

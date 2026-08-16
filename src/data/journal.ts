@@ -8,6 +8,17 @@ export type Essay = {
 
 export const essays: Essay[] = [
   {
+    slug: "studio-door",
+    title: "The studio has a door now",
+    date: "August 2026",
+    dek: "STACK needed a place to live besides a preview tab. This site is that door.",
+    body: [
+      "A game is not finished when the gravity curve is right. It is finished when someone who is not you can find it, tap Play, and know what their hands are supposed to do. For months STACK lived in a build window. That is useful. It is not a studio.",
+      "Bungaworks is the door. The well is on /play. The notes are in the journal. Signed-in runs sit on the studio board. Guests keep a local best on the device they used. I wanted the site to feel like the game: quiet surfaces, honest type, no neon pretending to be taste.",
+      "The next thing is not a redesign. It is more evenings in the well, and whatever game comes after STACK. This page is so those games have somewhere to land.",
+    ],
+  },
+  {
     slug: "guideline-well",
     title: "Why STACK is a guideline well",
     date: "August 2026",
@@ -55,4 +66,9 @@ export const essays: Essay[] = [
 
 export function getEssay(slug: string) {
   return essays.find((e) => e.slug === slug);
+}
+
+export function readingMinutes(essay: Essay) {
+  const words = essay.body.join(" ").split(/\s+/).length;
+  return Math.max(1, Math.round(words / 220));
 }

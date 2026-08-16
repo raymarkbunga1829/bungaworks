@@ -26,6 +26,10 @@
   --radius: 0.75rem;
 
   --shadow-panel: 0 20px 50px -28px rgb(0 0 0 / 0.65);
+
+  --motion-quick: 150ms;
+  --motion-fast: 250ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @layer base {
@@ -50,6 +54,29 @@
   ::selection {
     background: color-mix(in oklab, var(--color-fg) 18%, transparent);
     color: var(--color-fg);
+  }
+}
+
+@layer utilities {
+  .reveal {
+    animation: reveal-up var(--motion-fast) var(--ease-out) both;
+  }
+  .reveal-delay-1 {
+    animation-delay: 60ms;
+  }
+  .reveal-delay-2 {
+    animation-delay: 120ms;
+  }
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
