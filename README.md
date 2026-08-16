@@ -2,6 +2,8 @@
 
 Indie studio site for **Ray Mark Bunga** (Davao). Ships **STACK** — a guideline Tetris with 7-bag, SRS wall kicks, lock delay, ghost, hold, and a next-5 queue.
 
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/raymarkbunga1829/bungaworks)
+
 ## Play
 
 - [Play STACK](/play)
@@ -16,4 +18,4 @@ React 19, TanStack Start, Vite, Tailwind. The well is a canvas 2D engine. Signed
 
 ## Deploy
 
-Import this repo on Vercel. Framework is detected from `vite.config.ts` (Nitro `vercel` preset on build). Build command: `npm run build`.
+This repo is ready for Vercel. Import it and use the default build (`npm run build`). Nitro writes the Vercel output during that build.
