@@ -4,19 +4,17 @@ import { Button } from "@/components/ui/button";
 import { SiteShell } from "@/components/site-shell";
 import { LocalBest } from "@/components/local-best";
 import { essays } from "@/data/journal";
+import { pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/")({
   component: Home,
-  head: () => ({
-    meta: [
-      { title: "Bungaworks — STACK from Davao" },
-      {
-        name: "description",
-        content:
-          "Ray Mark Bunga’s studio in Davao. Play STACK, a guideline Tetris with 7-bag, SRS, hold, and lock delay.",
-      },
-    ],
-  }),
+  head: () =>
+    pageHead({
+      title: "Bungaworks — STACK from Davao",
+      description:
+        "Ray Mark Bunga’s studio in Davao. Play STACK, a guideline Tetris with 7-bag, SRS, hold, and lock delay.",
+      path: "/",
+    }),
 });
 
 const specs = [
@@ -45,6 +43,9 @@ function Home() {
           <img
             src="/hero-studio.jpg"
             alt=""
+            width={1792}
+            height={1008}
+            fetchPriority="high"
             className="absolute inset-0 h-full w-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/55 to-bg/20" />
@@ -105,6 +106,10 @@ function Home() {
             <img
               src="/still-blocks.jpg"
               alt="Resin tetrominoes on concrete"
+              width={1600}
+              height={1200}
+              loading="lazy"
+              decoding="async"
               className="aspect-[4/3] h-full w-full object-cover"
             />
           </figure>
@@ -143,6 +148,10 @@ function Home() {
             <img
               src="/studio-desk.jpg"
               alt="Night studio desk in Davao"
+              width={1728}
+              height={1152}
+              loading="lazy"
+              decoding="async"
               className="aspect-[3/2] w-full object-cover"
             />
           </figure>

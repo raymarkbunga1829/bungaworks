@@ -1,5 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { essays, getEssay, readingMinutes } from "@/data/journal";
+import { pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/journal/$slug")({
   loader: ({ params }) => {
@@ -7,15 +8,15 @@ export const Route = createFileRoute("/journal/$slug")({
     if (!essay) throw notFound();
     return essay;
   },
-  head: ({ loaderData }) => ({
-    meta: [
-      { title: loaderData ? `${loaderData.title} — Bungaworks` : "Journal — Bungaworks" },
-      {
-        name: "description",
-        content: loaderData?.dek ?? "Notes from the well.",
-      },
-    ],
-  }),
+  head: ({ loaderData }) =>
+    pageHead({
+      title: loaderData
+        ? `${loaderData.title} — Bungaworks`
+        : "Journal — Bungaworks",
+      description: loaderData?.dek ?? "Notes from the well.",
+      path: loaderData ? `/journal/${loaderData.slug}` : "/journal",
+      type: "article",
+    }),
   component: EssayPage,
 });
 

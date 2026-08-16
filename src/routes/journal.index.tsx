@@ -1,18 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { essays, readingMinutes } from "@/data/journal";
+import { pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/journal/")({
   component: JournalIndex,
-  head: () => ({
-    meta: [
-      { title: "Journal — Bungaworks" },
-      {
-        name: "description",
-        content:
-          "Development notes for STACK — rotation, feel, and building a guideline client from Davao.",
-      },
-    ],
-  }),
+  head: () =>
+    pageHead({
+      title: "Journal — Bungaworks",
+      description:
+        "Development notes for STACK — rotation, feel, and building a guideline client from Davao.",
+      path: "/journal",
+    }),
 });
 
 function JournalIndex() {
