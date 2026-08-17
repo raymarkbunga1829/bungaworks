@@ -2,39 +2,28 @@ import { createRootRoute, HeadContent, Outlet, Scripts } from "@tanstack/react-r
 import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
 import { QueryProvider } from "@/components/query-provider";
+import { pageHead } from "@/lib/seo";
 import appCss from "../styles.css?url";
 
-const APP_NAME = "STACK — Bungaworks";
-const host = import.meta.env.VITE_PUBLIC_HOSTNAME;
-const ogImage = host ? `https://${host}/og.jpg` : undefined;
+const DEFAULT_TITLE = "Bungaworks — STACK from Davao";
+const DEFAULT_DESCRIPTION =
+  "Bungaworks is Ray Mark Bunga’s studio in Davao. Play STACK, a guideline Tetris with 7-bag, SRS, hold, and lock delay.";
+
+const seo = pageHead({
+  title: DEFAULT_TITLE,
+  description: DEFAULT_DESCRIPTION,
+  path: "/",
+  type: "website",
+});
 
 export const Route = createRootRoute({
   head: () => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: APP_NAME },
-      {
-        name: "description",
-        content:
-          "Bungaworks is Ray Mark Bunga’s studio in Davao. Play STACK, a guideline Tetris with 7-bag, SRS, hold, and lock delay.",
-      },
       { name: "apple-mobile-web-app-title", content: "STACK" },
       { name: "theme-color", content: "#0c0c0b" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { property: "og:type", content: "x:game" },
-      { property: "og:title", content: APP_NAME },
-      {
-        property: "og:description",
-        content: "Guideline Tetris from Davao. 7-bag, SRS, lock delay, hold.",
-      },
-      ...(ogImage
-        ? [
-            { property: "og:image", content: ogImage },
-            { property: "og:image:width", content: "1200" },
-            { property: "og:image:height", content: "630" },
-          ]
-        : []),
+      ...seo.meta,
     ],
     links: [
       { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },

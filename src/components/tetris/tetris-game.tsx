@@ -324,7 +324,11 @@ export function TetrisGame() {
             onPointerDown={onPointerDown}
             onPointerUp={onPointerUp}
           >
-            <canvas ref={canvasRef} className="mx-auto block h-full w-full" />
+            <canvas
+              ref={canvasRef}
+              className="mx-auto block h-full w-full"
+              aria-label="STACK well, 10 by 20"
+            />
             {hud.status === "ready" ? (
               <Overlay>
                 <p className="font-display text-4xl tracking-tight">STACK</p>
@@ -381,24 +385,29 @@ export function TetrisGame() {
           </div>
 
           <div className="grid grid-cols-4 gap-2 md:hidden">
-            <Pad onClick={() => engineRef.current?.tapHold()}>Hold</Pad>
-            <Pad onClick={() => engineRef.current?.tapRotate(-1)}>
+            <Pad label="Hold" onClick={() => engineRef.current?.tapHold()}>
+              Hold
+            </Pad>
+            <Pad label="Rotate CCW" onClick={() => engineRef.current?.tapRotate(-1)}>
               <RotateCcw className="size-4" />
             </Pad>
-            <Pad onClick={() => engineRef.current?.tapRotate(1)}>
+            <Pad label="Rotate CW" onClick={() => engineRef.current?.tapRotate(1)}>
               <RotateCw className="size-4" />
             </Pad>
-            <Pad onClick={() => engineRef.current?.tapDrop()}>Drop</Pad>
-            <Pad onClick={() => engineRef.current?.tapMove(-1)}>
+            <Pad label="Hard drop" onClick={() => engineRef.current?.tapDrop()}>
+              Drop
+            </Pad>
+            <Pad label="Move left" onClick={() => engineRef.current?.tapMove(-1)}>
               <ChevronLeft className="size-5" />
             </Pad>
-            <Pad onClick={() => engineRef.current?.tapSoft()}>
+            <Pad label="Soft drop" onClick={() => engineRef.current?.tapSoft()}>
               <ChevronDown className="size-5" />
             </Pad>
-            <Pad onClick={() => engineRef.current?.tapMove(1)}>
+            <Pad label="Move right" onClick={() => engineRef.current?.tapMove(1)}>
               <ChevronRight className="size-5" />
             </Pad>
             <Pad
+              label="Reset"
               onClick={() => {
                 engineRef.current?.reset(hud.best);
                 begin();
@@ -484,13 +493,16 @@ function Overlay({ children }: { children: React.ReactNode }) {
 function Pad({
   children,
   onClick,
+  label,
 }: {
   children: React.ReactNode;
   onClick: () => void;
+  label: string;
 }) {
   return (
     <button
       type="button"
+      aria-label={label}
       onClick={() => {
         unlockAudio();
         onClick();

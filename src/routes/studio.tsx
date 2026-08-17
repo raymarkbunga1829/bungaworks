@@ -4,18 +4,17 @@ import { SiteShell } from "@/components/site-shell";
 import { Button } from "@/components/ui/button";
 import { listTopRuns } from "@/lib/scores";
 
+import { pageHead } from "@/lib/seo";
+
 export const Route = createFileRoute("/studio")({
   component: StudioPage,
-  head: () => ({
-    meta: [
-      { title: "Studio — Bungaworks" },
-      {
-        name: "description",
-        content:
-          "Ray Mark Bunga, game developer in Davao. Bungaworks is the studio. STACK is the first game.",
-      },
-    ],
-  }),
+  head: () =>
+    pageHead({
+      title: "Studio — Bungaworks",
+      description:
+        "Ray Mark Bunga, game developer in Davao. Bungaworks is the studio. STACK is the first game.",
+      path: "/studio",
+    }),
 });
 
 const facts = [
