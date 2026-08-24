@@ -12,13 +12,14 @@ export const Route = createFileRoute("/login")({
       title: "Sign in — Bungaworks",
       description: "Sign in to put a STACK run on the Bungaworks studio board.",
       path: "/login",
+      robots: "noindex, nofollow",
     }),
 });
 
 function Login() {
   return (
     <SiteShell>
-      <main className="mx-auto flex min-h-[70svh] max-w-md flex-col justify-center px-4 py-16">
+      <main id="content" className="mx-auto flex min-h-[70svh] max-w-md flex-col justify-center px-4 py-16">
         <p className="text-[11px] uppercase tracking-[0.2em] text-subtle">Account</p>
         <h1 className="mt-3 font-display text-4xl tracking-tight">Sign in</h1>
         <p className="mt-3 text-muted">

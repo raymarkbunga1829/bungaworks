@@ -4,7 +4,7 @@ import { UserButton } from "@/lib/auth/gates";
 import { cn } from "@/lib/utils";
 
 const links = [
-  { to: "/", label: "Work", hideOnMobile: true },
+  { to: "/work", label: "Work" },
   { to: "/play", label: "Play" },
   { to: "/journal", label: "Journal" },
   { to: "/studio", label: "Studio" },
@@ -26,9 +26,7 @@ export function SiteHeader() {
         <nav className="flex items-center gap-0.5 sm:gap-2">
           {links.map((link) => {
             const active =
-              link.to === "/"
-                ? pathname === "/"
-                : pathname === link.to || pathname.startsWith(`${link.to}/`);
+              pathname === link.to || pathname.startsWith(`${link.to}/`);
             return (
               <Link
                 key={link.to}
@@ -36,7 +34,6 @@ export function SiteHeader() {
                 className={cn(
                   "rounded-sm px-2 py-2 text-sm transition-colors duration-150 sm:px-2.5",
                   active ? "text-fg" : "text-muted hover:text-fg",
-                  "hideOnMobile" in link && link.hideOnMobile ? "hidden sm:inline" : "",
                 )}
               >
                 {link.label}

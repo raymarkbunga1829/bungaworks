@@ -4,15 +4,16 @@ import { Button } from "@/components/ui/button";
 import { SiteShell } from "@/components/site-shell";
 import { LocalBest } from "@/components/local-best";
 import { essays } from "@/data/journal";
+import { works } from "@/data/work";
 import { pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/")({
   component: Home,
   head: () =>
     pageHead({
-      title: "Bungaworks — STACK from Davao",
+      title: "Bungaworks — studio from Davao",
       description:
-        "Ray Mark Bunga’s studio in Davao. Play STACK, a guideline Tetris with 7-bag, SRS, hold, and lock delay.",
+        "Ray Mark Bunga’s studio in Davao. STACK is the featured game. Other work lives on /work.",
       path: "/",
     }),
 });
@@ -38,11 +39,11 @@ const keys = [
 function Home() {
   return (
     <SiteShell>
-      <main>
+      <main id="content">
         <section className="relative min-h-[78svh] overflow-hidden border-b border-border">
           <img
             src="/hero-studio.jpg"
-            alt=""
+            alt="Night desk in Davao: a portrait monitor playing STACK, a lamp, and the city across the water"
             width={1792}
             height={1008}
             fetchPriority="high"
@@ -51,24 +52,55 @@ function Home() {
           <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/55 to-bg/20" />
           <div className="relative mx-auto flex min-h-[78svh] max-w-6xl flex-col justify-end px-4 pb-12 pt-24 sm:px-6 sm:pb-16">
             <p className="reveal text-[11px] uppercase tracking-[0.22em] text-accent">
-              Shipped · STACK
+              Bungaworks · Davao
             </p>
             <h1 className="reveal reveal-delay-1 mt-3 max-w-3xl font-display text-[3.4rem] leading-[0.92] tracking-tight sm:text-7xl">
-              A guideline well from Davao.
+              A studio, and a guideline well.
             </h1>
             <p className="reveal reveal-delay-2 mt-5 max-w-md text-base text-fg/80 sm:text-lg">
-              Ray Mark Bunga’s first shipped game. 7-bag, Super Rotation, lock
-              delay, ghost, hold. Built to be practiced, not just clicked.
+              Ray Mark Bunga’s one-person studio. STACK is the first shipped
+              game — 7-bag, Super Rotation, lock delay, ghost, hold. Built to
+              be practiced, not just clicked.
             </p>
             <div className="reveal reveal-delay-2 mt-8 flex flex-wrap items-center gap-3">
               <Button asChild size="lg">
                 <Link to="/play">Play STACK</Link>
               </Button>
               <Button asChild size="lg" variant="outline">
-                <Link to="/studio">The studio</Link>
+                <Link to="/work">All work</Link>
               </Button>
             </div>
             <LocalBest className="reveal reveal-delay-2 mt-5 text-sm text-muted" />
+          </div>
+        </section>
+
+        <section className="border-b border-border bg-surface">
+          <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-10 sm:flex-row sm:items-end sm:justify-between sm:px-6">
+            <div>
+              <p className="text-[11px] uppercase tracking-[0.2em] text-subtle">
+                Work
+              </p>
+              <h2 className="mt-2 font-display text-3xl tracking-tight">
+                On the bench
+              </h2>
+              <ul className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm text-muted">
+                {works.map((w) => (
+                  <li key={w.slug}>
+                    {w.featured ? (
+                      <span className="text-fg">{w.name}</span>
+                    ) : (
+                      w.name
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <Link
+              to="/work"
+              className="inline-flex min-h-11 items-center gap-2 text-sm text-fg hover:opacity-80"
+            >
+              See all work <ArrowRight className="size-4" />
+            </Link>
           </div>
         </section>
 
@@ -189,7 +221,7 @@ function Home() {
               </div>
               <Link
                 to="/journal"
-                className="hidden min-h-11 items-center text-sm text-muted hover:text-fg sm:inline-flex"
+                className="inline-flex min-h-11 shrink-0 items-center text-sm text-muted hover:text-fg"
               >
                 All notes
               </Link>

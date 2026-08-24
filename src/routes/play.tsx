@@ -17,7 +17,7 @@ export const Route = createFileRoute("/play")({
 function PlayPage() {
   return (
     <SiteShell bare>
-      <main className="flex min-h-0 flex-1 flex-col">
+      <main id="content" className="flex min-h-0 flex-1 flex-col">
         <div className="flex shrink-0 items-center justify-between gap-3 border-b border-border px-4 py-2 sm:px-6">
           <p className="truncate text-sm text-muted">
             STACK — the shipped game

@@ -14,6 +14,7 @@ import { Route as JournalRouteImport } from './routes/journal'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as PlayRouteImport } from './routes/play'
 import { Route as StudioRouteImport } from './routes/studio'
+import { Route as WorkRouteImport } from './routes/work'
 import { Route as JournalIndexRouteImport } from './routes/journal.index'
 import { Route as JournalSlugRouteImport } from './routes/journal.$slug'
 import { Route as ApiAuthSplatRouteImport } from './routes/api/auth/$'
@@ -43,6 +44,11 @@ const StudioRoute = StudioRouteImport.update({
   path: '/studio',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WorkRoute = WorkRouteImport.update({
+  id: '/work',
+  path: '/work',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const JournalIndexRoute = JournalIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -65,6 +71,7 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/play': typeof PlayRoute
   '/studio': typeof StudioRoute
+  '/work': typeof WorkRoute
   '/journal/$slug': typeof JournalSlugRoute
   '/journal/': typeof JournalIndexRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
@@ -74,6 +81,7 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/play': typeof PlayRoute
   '/studio': typeof StudioRoute
+  '/work': typeof WorkRoute
   '/journal/$slug': typeof JournalSlugRoute
   '/journal': typeof JournalIndexRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
@@ -85,6 +93,7 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/play': typeof PlayRoute
   '/studio': typeof StudioRoute
+  '/work': typeof WorkRoute
   '/journal/$slug': typeof JournalSlugRoute
   '/journal/': typeof JournalIndexRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
@@ -97,6 +106,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/play'
     | '/studio'
+    | '/work'
     | '/journal/$slug'
     | '/journal/'
     | '/api/auth/$'
@@ -106,6 +116,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/play'
     | '/studio'
+    | '/work'
     | '/journal/$slug'
     | '/journal'
     | '/api/auth/$'
@@ -116,6 +127,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/play'
     | '/studio'
+    | '/work'
     | '/journal/$slug'
     | '/journal/'
     | '/api/auth/$'
@@ -127,6 +139,7 @@ export interface RootRouteChildren {
   LoginRoute: typeof LoginRoute
   PlayRoute: typeof PlayRoute
   StudioRoute: typeof StudioRoute
+  WorkRoute: typeof WorkRoute
   ApiAuthSplatRoute: typeof ApiAuthSplatRoute
 }
 
@@ -165,6 +178,13 @@ declare module '@tanstack/react-router' {
       path: '/studio'
       fullPath: '/studio'
       preLoaderRoute: typeof StudioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/work': {
+      id: '/work'
+      path: '/work'
+      fullPath: '/work'
+      preLoaderRoute: typeof WorkRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/journal/': {
@@ -210,6 +230,7 @@ const rootRouteChildren: RootRouteChildren = {
   LoginRoute: LoginRoute,
   PlayRoute: PlayRoute,
   StudioRoute: StudioRoute,
+  WorkRoute: WorkRoute,
   ApiAuthSplatRoute: ApiAuthSplatRoute,
 }
 export const routeTree = rootRouteImport
