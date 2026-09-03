@@ -8,35 +8,38 @@ export function SiteFooter() {
           <div>
             <p className="font-display text-2xl tracking-tight">Bungaworks</p>
             <p className="mt-1 max-w-sm text-sm text-muted">
-              Indie games from Davao. STACK is the first well — guideline Tetris,
-              built to be practiced.
+              A one-person studio in Davao. STACK is the first game — other
+              work lives on the bench too.
             </p>
           </div>
           <nav className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted">
-            <Link to="/play" className="min-h-11 inline-flex items-center hover:text-fg">
-              Play STACK
+            <Link to="/work" className="inline-flex min-h-11 items-center hover:text-fg">
+              Work
             </Link>
-            <Link to="/journal" className="min-h-11 inline-flex items-center hover:text-fg">
+            <Link to="/play" className="inline-flex min-h-11 items-center hover:text-fg">
+              Play
+            </Link>
+            <Link to="/journal" className="inline-flex min-h-11 items-center hover:text-fg">
               Journal
             </Link>
-            <Link to="/studio" className="min-h-11 inline-flex items-center hover:text-fg">
+            <Link to="/studio" className="inline-flex min-h-11 items-center hover:text-fg">
               Studio
             </Link>
-            <a
-              href="https://x.com/raymarkbunga18"
-              target="_blank"
-              rel="noreferrer"
-              className="min-h-11 inline-flex items-center hover:text-fg"
-            >
-              X
-            </a>
             <a
               href="https://github.com/raymarkbunga1829/bungaworks"
               target="_blank"
               rel="noreferrer"
-              className="min-h-11 inline-flex items-center hover:text-fg"
+              className="inline-flex min-h-11 items-center hover:text-fg"
             >
               GitHub
+            </a>
+            <a
+              href="https://x.com/raymarkbunga18"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex min-h-11 items-center hover:text-fg"
+            >
+              X @raymarkbunga18
             </a>
           </nav>
         </div>

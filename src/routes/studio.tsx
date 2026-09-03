@@ -4,6 +4,7 @@ import { SiteShell } from "@/components/site-shell";
 import { Button } from "@/components/ui/button";
 import { listTopRuns } from "@/lib/scores";
 
+import { works } from "@/data/work";
 import { pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/studio")({
@@ -19,7 +20,7 @@ export const Route = createFileRoute("/studio")({
 
 const facts = [
   { k: "Place", v: "Davao, Philippines" },
-  { k: "Now", v: "STACK — guideline Tetris" },
+  { k: "Now", v: "STACK, plus other work on /work" },
   { k: "Stack", v: "Canvas, SRS, 7-bag, local + signed-in scores" },
 ];
 
@@ -46,7 +47,7 @@ function StudioPage() {
 
   return (
     <SiteShell>
-      <main>
+      <main id="content">
         <section className="border-b border-border">
           <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-end lg:py-24">
             <div>
@@ -134,34 +135,48 @@ function StudioPage() {
               On the bench
             </h2>
             <ul className="mt-8 divide-y divide-border border-y border-border">
-              <li className="flex flex-col gap-3 py-6 sm:flex-row sm:items-center sm:justify-between">
-                <div>
-                  <p className="font-display text-2xl tracking-tight">STACK</p>
-                  <p className="mt-1 text-sm text-muted">
-                    Guideline Tetris. 10×20, 7-bag, SRS, lock delay, hold.
-                  </p>
-                </div>
-                <div className="flex items-center gap-3">
-                  <span className="text-[11px] uppercase tracking-[0.16em] text-subtle">
-                    Shipped
-                  </span>
-                  <Button asChild size="sm">
-                    <Link to="/play">Play</Link>
-                  </Button>
-                </div>
-              </li>
-              <li className="flex flex-col gap-2 py-6 sm:flex-row sm:items-center sm:justify-between">
-                <div>
-                  <p className="font-display text-2xl tracking-tight">Next</p>
-                  <p className="mt-1 text-sm text-muted">
-                    Untitled. Same studio, same rule: finish the systems first.
-                  </p>
-                </div>
-                <span className="text-[11px] uppercase tracking-[0.16em] text-subtle">
-                  In notes
-                </span>
-              </li>
+              {works.map((item) => (
+                <li
+                  key={item.slug}
+                  className="flex flex-col gap-3 py-6 sm:flex-row sm:items-center sm:justify-between"
+                >
+                  <div>
+                    <p className="font-display text-2xl tracking-tight">
+                      {item.name}
+                    </p>
+                    <p className="mt-1 text-sm text-muted">{item.dek}</p>
+                  </div>
+                  <div className="flex flex-wrap items-center gap-3">
+                    <span className="text-[11px] uppercase tracking-[0.16em] text-subtle">
+                      {item.featured ? "Featured" : item.kind}
+                    </span>
+                    {item.path ? (
+                      <Button asChild size="sm">
+                        <Link to={item.path}>Play</Link>
+                      </Button>
+                    ) : item.live ? (
+                      <Button asChild size="sm" variant="outline">
+                        <a href={item.live} target="_blank" rel="noreferrer">
+                          Live
+                        </a>
+                      </Button>
+                    ) : (
+                      <Button asChild size="sm" variant="outline">
+                        <a href={item.repo} target="_blank" rel="noreferrer">
+                          GitHub
+                        </a>
+                      </Button>
+                    )}
+                  </div>
+                </li>
+              ))}
             </ul>
+            <Link
+              to="/work"
+              className="mt-6 inline-flex min-h-11 items-center text-sm text-fg hover:opacity-80"
+            >
+              All work
+            </Link>
           </div>
         </section>
 

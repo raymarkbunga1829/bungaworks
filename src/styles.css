@@ -7,7 +7,7 @@
   --color-raised: #1d1d1b;
   --color-fg: #ecece4;
   --color-muted: #8d8e86;
-  --color-subtle: #6a6b64;
+  --color-subtle: #82837c;
   --color-accent: #d4d6cd;
   --color-accent-fg: #0c0c0b;
   --color-border: #2a2a27;
@@ -54,6 +54,15 @@
   ::selection {
     background: color-mix(in oklab, var(--color-fg) 18%, transparent);
     color: var(--color-fg);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-fg);
+    outline-offset: 3px;
+  }
+
+  :focus:not(:focus-visible) {
+    outline: none;
   }
 }
 

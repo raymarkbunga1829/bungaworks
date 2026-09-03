@@ -28,11 +28,13 @@ export function pageHead({
   description,
   path,
   type = "website",
+  robots,
 }: {
   title: string;
   description: string;
   path: string;
   type?: "website" | "article";
+  robots?: string;
 }) {
   const origin = resolveOrigin();
   const normalized = path.startsWith("/") ? path : `/${path}`;
@@ -43,6 +45,7 @@ export function pageHead({
     meta: [
       { title },
       { name: "description", content: description },
+      ...(robots ? [{ name: "robots", content: robots }] : []),
       { property: "og:type", content: type },
       { property: "og:title", content: title },
       { property: "og:description", content: description },

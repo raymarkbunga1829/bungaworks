@@ -15,7 +15,7 @@ export const Route = createFileRoute("/journal/")({
 
 function JournalIndex() {
   return (
-    <main className="mx-auto max-w-3xl px-4 py-14 sm:px-6 sm:py-20">
+    <main id="content" className="mx-auto max-w-3xl px-4 py-14 sm:px-6 sm:py-20">
       <p className="text-[11px] uppercase tracking-[0.2em] text-subtle">Journal</p>
       <h1 className="mt-3 font-display text-5xl tracking-tight">Notes from the well</h1>
       <p className="mt-4 max-w-lg text-muted">

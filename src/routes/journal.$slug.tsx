@@ -27,7 +27,7 @@ function EssayPage() {
   const next = idx >= 0 && idx < essays.length - 1 ? essays[idx + 1] : undefined;
 
   return (
-    <article className="mx-auto max-w-2xl px-4 py-14 sm:px-6 sm:py-20">
+    <article id="content" className="mx-auto max-w-2xl px-4 py-14 sm:px-6 sm:py-20">
       <Link to="/journal" className="text-sm text-muted hover:text-fg">
         Journal
       </Link>
